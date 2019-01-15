@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>URL test</title>
+  </head>
+
+  <body>
+
+    <p>URL is: </p>
+
+    <h2>URL test</h2>
+
+    <ul class="url-test"></ul>
+
+    <h2>URLSearchParams test</h2>
+
+    <ul class="urlsearchparams-test"></ul>
+
+  <script>
+    const url = new URL('https://chris:password@developer.mozilla.org:7071/en-US/docs/Web/API/URL?a=1&b=2&c=3&d=4');
+    const params = url.searchParams;
+
+    const para = document.querySelector('p');
+    const list1 = document.querySelector('.url-test');
+    const list2 = document.querySelector('.urlsearchparams-test');
+
+    para.textContent = 'URL is: ' + url.toString();
+
+    for (var property in url) {
+      let item = document.createElement('li');
+      console.log(property)
+      item.textContent = url[property];
+      list1.appendChild(item);
+    }
+
+    params.append('cat', 'dog');
+    let item1 = document.createElement('li');
+    item1.textContent = params.toString();
+    list2.appendChild(item1);
+
+    let cat = params.get('cat');
+    let item2 = document.createElement('li');
+    item2.textContent = cat;
+    list2.appendChild(item2);
+
+    params.sort();
+    let item3 = document.createElement('li');
+    item3.textContent = params.toString();
+    list2.appendChild(item3);
+
+    params.forEach(function(value) {
+      let item = document.createElement('li');
+      item.textContent = value;
+      list2.appendChild(item);
+    });
+
+
+
+  </script>
+  </body>
+</html>
